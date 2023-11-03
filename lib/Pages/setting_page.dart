@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/globals/app_asset.dart';
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
 
@@ -11,7 +12,21 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text('Setting Page'),
+        child: Scaffold(
+          body: Stack(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(AppAssets.background),
+                        fit: BoxFit.cover,
+                        opacity: 0.5,
+                      )
+                  ),
+                ),
+              ]
+          ),
+        ),
       ),
     );
   }
