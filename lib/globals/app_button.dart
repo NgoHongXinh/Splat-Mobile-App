@@ -10,7 +10,7 @@ class AppButton {
     return MaterialButton(
       onPressed: onTap,
       color: AppColors.White,
-      splashColor: AppColors.White,
+      splashColor: Colors.grey.shade300,
       padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 15),
       shape: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25),

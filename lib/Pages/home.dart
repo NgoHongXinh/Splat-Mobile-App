@@ -26,72 +26,17 @@ class _HomePageState extends State<HomePage> {
   void _showDialogAddPlayer(){
     showModalBottomSheet(
       context: context,
-
-        shape: RoundedRectangleBorder(
-          borderRadius:  BorderRadius.vertical(top: Radius.circular(30)),
-        ),
-      // transitionAnimationController: ,
+      shape: RoundedRectangleBorder(
+        borderRadius:  BorderRadius.vertical(top: Radius.circular(30)),
+      ),
       builder: (context){
-      return Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                alignment: Alignment.centerLeft,
-               child: IconButton(
-                  alignment: Alignment.topLeft,
-                  onPressed: (){Navigator.of(context).pop();},
-                  icon: Icon(Icons.close),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 0,right: 120),
-                child: Container(
-                  child: Text('Thêm người chơi',style: AppTextStyle.headerDialogTextStyle(),)
-                ),
-              ),
-            ],
-          ),
-          Container(
-            height: 350,
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: ListView(
-                children: [
-                  ListBuild.ListPlayer(
-                      assets: AppAssets.player,
-                      name: 'Xinh',
-                      onPressed:(){},
-                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
-                  ListBuild.ListPlayer(
-                      assets: AppAssets.player,
-                      name: 'Như',
-                      onPressed: (){},
-                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
-                  ListBuild.ListPlayer(
-                      assets: AppAssets.player,
-                      name: 'Thịnh',
-                      onPressed: (){},
-                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
-                  ListBuild.ListPlayer(
-                      assets: AppAssets.player,
-                      name: 'Ngọc',
-                      onPressed: (){},
-                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
-                  ListBuild.ListPlayer(
-                      assets: AppAssets.player,
-                      name: 'Nhân',
-                      onPressed: (){},
-                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
-                ],
-              ),
-            ),
-          ),
-        ],
+      return AddDialog.BottomListBuilder(
+          title: 'Thêm người chơi',
+          onClose: (){Navigator.of(context).pop();},
+          onAdd: (){}
       );
-    },
+      }
+
     );
   }
   @override
@@ -114,8 +59,8 @@ class _HomePageState extends State<HomePage> {
           Container(
             child: ListView(
                   children: [
-                    Container(
-                      height: myHeight*0.45,
+                    Placeholder(
+                      fallbackHeight: myHeight*0.45,
                       child: Stack(
                         children: <Widget>[
                           Positioned(
@@ -218,109 +163,159 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    Padding(
-                        padding: const EdgeInsets.all(20),
-                           child: Container(
-                              width: myWidth,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20)
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        'Tên game',
-                                        style: AppTextStyle.normalHeaderTextStyle(),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        child:TextField(
-                                            textAlign: TextAlign.left,
-                                            cursorColor: Colors.orange,
-                                            decoration: InputDecoration(
-                                              hintText: "Game 7.1.3",
-                                              hintStyle: AppTextStyle.normalTextStyle(),
-                                              filled: true,
-                                              fillColor: Colors.grey.shade200,
-                                              contentPadding: EdgeInsets.symmetric(vertical: 8,horizontal: 10),
-                                              enabledBorder: new OutlineInputBorder(
-                                                borderRadius: new BorderRadius.circular(30.0),
-                                                borderSide: new BorderSide(color: Colors.grey.shade200,width: 0),
-                                              ),
-                                              focusedBorder: new OutlineInputBorder(
-                                                borderRadius: new BorderRadius.circular(30.0),
-                                                borderSide:  BorderSide(color: Colors.grey.shade200, width: 3),
+                    Container(
+                      child: Padding(
+                          padding: const EdgeInsets.all(20),
+                               child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20),
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.topLeft,
+                                          child: Text(
+                                            'Tên game',
+                                            style: AppTextStyle.normalHeaderTextStyle(),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            child:TextField(
+                                                textAlign: TextAlign.left,
+                                                cursorColor: Colors.orange,
+                                                decoration: InputDecoration(
+                                                  hintText: "Game 7.1.3",
+                                                  hintStyle: AppTextStyle.normalTextStyle(),
+                                                  filled: true,
+                                                  fillColor: Colors.grey.shade200,
+                                                  contentPadding: EdgeInsets.symmetric(vertical: 8,horizontal: 10),
+                                                  enabledBorder: new OutlineInputBorder(
+                                                    borderRadius: new BorderRadius.circular(30.0),
+                                                    borderSide: new BorderSide(color: Colors.grey.shade200,width: 0),
+                                                  ),
+                                                  focusedBorder: new OutlineInputBorder(
+                                                    borderRadius: new BorderRadius.circular(30.0),
+                                                    borderSide:  BorderSide(color: Colors.grey.shade200, width: 3),
+                                                  ),
+                                                )
+
+                                            ),
+
+
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.topLeft,
+                                          child: Text(
+                                            'Người chơi:',
+                                            style: AppTextStyle.normalHeaderTextStyle(),
+
+                                          ),
+                                        ),
+                                        Container(
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Column(
+                                                children: <Widget>[
+                                                  AppButton.buildMaterialButton(buttonName: 'Thêm người chơi', onTap: _showDialogAddPlayer)
+                                                ],
                                               ),
                                             )
-
                                         ),
-
-
-                                      ),
-                                    ),
-                                    Container(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        'Người chơi:',
-                                        style: AppTextStyle.normalHeaderTextStyle(),
-
-                                      ),
-                                    ),
-                                    Container(
-                                        child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Column(
-                                            children: <Widget>[
-                                              AppButton.buildMaterialButton(buttonName: 'Thêm người chơi', onTap: _showDialogAddPlayer)
-                                            ],
+                                        Container(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(5.0),
+                                            child: ListView(
+                                              //không cần set height, khi wrap
+                                              shrinkWrap: true,
+                                              physics: NeverScrollableScrollPhysics(),
+                                              //ko cho scroll
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.symmetric(vertical: 10),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey.shade200,
+                                                        borderRadius: BorderRadius.circular(20)
+                                                    ),
+                                                    child: ListBuild.ListPlayer(
+                                                        assets: AppAssets.player,
+                                                        name: 'Linh',
+                                                        onPressed:_showDialog,
+                                                        icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.symmetric(vertical: 10),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey.shade200,
+                                                        borderRadius: BorderRadius.circular(20)
+                                                    ),
+                                                    child: ListBuild.ListPlayer(
+                                                        assets: AppAssets.player,
+                                                        name: 'Nhân',
+                                                        onPressed:_showDialog,
+                                                        icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.symmetric(vertical: 10),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey.shade200,
+                                                        borderRadius: BorderRadius.circular(20)
+                                                    ),
+                                                    child: ListBuild.ListPlayer(
+                                                        assets: AppAssets.player,
+                                                        name: 'My',
+                                                        onPressed:_showDialog,
+                                                        icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.symmetric(vertical: 10),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.grey.shade200,
+                                                        borderRadius: BorderRadius.circular(20)
+                                                    ),
+                                                    child: ListBuild.ListPlayer(
+                                                        assets: AppAssets.player,
+                                                        name: 'Ni',
+                                                        onPressed:_showDialog,
+                                                        icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                           ),
-                                        )
-                                    ),
-                                    Container(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
-                                        child: ListView(
-                                          //không cần set height, khi wrap
-                                          shrinkWrap: true,
-                                          physics: NeverScrollableScrollPhysics(),
-                                          //ko cho scroll
-                                          children: [
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Như',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Thịnh',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Ngọc',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Nhân',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Quỳnh',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                                          ],
                                         ),
-                                      ),
-                                    ),
-                                    Container(
-                                        child: Padding(
-                                          padding: EdgeInsets.all(10),
-                                          child: Column(
-                                            children: <Widget>[
-                                              AppButton.buildButtonCreateGame(buttonName: 'Tạo game', onTap: (){})
-                                            ],
-                                          ),
+                                        Container(
+                                            child: Padding(
+                                              padding: EdgeInsets.all(10),
+                                              child: Column(
+                                                children: <Widget>[
+                                                  AppButton.buildButtonCreateGame(buttonName: 'Tạo game', onTap: (){})
+                                                ],
+                                              ),
+                                            )
                                         )
-                                    )
-                                  ],
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            )
+                             )
 
-                    ),
+                      ),
               ],
             ),
-
           ),
 
         ],

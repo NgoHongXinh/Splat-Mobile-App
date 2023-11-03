@@ -12,8 +12,8 @@ class ListBuild{
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-          width: 100,
-          height: 100,
+          width: 70,
+          height: 70,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -37,7 +37,8 @@ class ListBuild{
           child: IconButton(
               onPressed: onPressed,
               icon: icon,
-            highlightColor: Colors.cyan,
+              focusColor: Colors.orange,
+
           ),
         )
       ],

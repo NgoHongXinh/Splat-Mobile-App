@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:testapp/ListView/list_player_builder.dart';
 import 'package:testapp/globals/app_asset.dart';
 import 'package:testapp/globals/app_button.dart';
+import 'package:testapp/globals/app_style.dart';
 
 class AddDialog{
   static AlertDialog AddDialogbuilder({
@@ -15,10 +16,8 @@ class AddDialog{
               borderRadius: BorderRadius.all(Radius.circular(30))
           ),
           insetPadding: EdgeInsets.zero,
-          contentPadding: EdgeInsets.zero,
-          alignment: Alignment.center,
           title: IconButton(
-            alignment: Alignment.topLeft,
+            alignment: Alignment.centerLeft,
             onPressed: onclose,
             icon: Icon(Icons.close),
           ),
@@ -44,58 +43,103 @@ class AddDialog{
           ]
       );
   }
-  static AlertDialog AddPlayer({
+  static Column BottomListBuilder({
     required String title,
-    required VoidCallback onclose,
-    required VoidCallback onApply,
+    required VoidCallback onClose,
+    required VoidCallback onAdd,
   }){
-      return AlertDialog(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(30))
-          ),
-          insetPadding: EdgeInsets.zero,
-          contentPadding: EdgeInsets.zero,
-          alignment: Alignment.center,
-          title: Row(
+      return Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                alignment: Alignment.topLeft,
-                onPressed: onclose,
-                icon: Icon(Icons.close),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    alignment: Alignment.topLeft,
+                    onPressed: onClose,
+                    icon: Icon(Icons.close),
+                  ),
+                ),
               ),
-              Text(title),
+              Padding(
+                padding: const EdgeInsets.only(left: 0,right: 120),
+                child: Container(
+                    child: Text(title,style: AppTextStyle.headerDialogTextStyle(),)
+                ),
+              ),
             ],
           ),
-          content: Container(
-            height: 100,
-            width: 200,
+          Container(
+            height: 350,
+            alignment: Alignment.center,
             child: Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(20),
               child: ListView(
                 children: [
-                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){},icon: Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){},icon: Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){},icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
-
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: ListBuild.ListPlayer(
+                          assets: AppAssets.player,
+                          name: 'Mỹ',
+                          onPressed:onAdd,
+                          icon:Icon(Icons.add_circle_outline, color: Colors.orange, size: 30,)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: ListBuild.ListPlayer(
+                          assets: AppAssets.player,
+                          name: 'Hoa',
+                          onPressed:onAdd,
+                          icon:Icon(Icons.add_circle_outline, color: Colors.orange, size: 30,)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: ListBuild.ListPlayer(
+                          assets: AppAssets.player,
+                          name: 'Xinh',
+                          onPressed:onAdd,
+                          icon:Icon(Icons.add_circle_outline, color: Colors.orange, size: 30,)),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: ListBuild.ListPlayer(
+                          assets: AppAssets.player,
+                          name: 'Minh',
+                          onPressed:onAdd,
+                          icon:Icon(Icons.add_circle_outline, color: Colors.orange, size: 30,)),
+                    ),
+                  ),
                 ],
               ),
             ),
-
           ),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: Container(
-                alignment: Alignment.center,
-                child: AppButton.buildButtonCreateGame(
-                  buttonName: 'Xác nhận',
-                  onTap: onApply,
-                ),
-              ),
-            )
-
-
-          ]
+        ],
       );
   }
 
