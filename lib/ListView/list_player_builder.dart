@@ -4,11 +4,12 @@ import 'package:testapp/globals/app_color.dart';
 class ListBuild{
   static Row ListPlayer({
     required String assets,
+    required icon,
     required String name,
     required VoidCallback onPressed,
   }){
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           width: 100,
@@ -25,13 +26,6 @@ class ListBuild{
                 borderRadius: BorderRadius.circular(50),
               ),
             )
-            // child: ClipRRect(
-            //   borderRadius: BorderRadius.circular(50.0),
-            //   child: SizedBox.fromSize(
-            //     size: Size.fromRadius(10),
-            //     child: Image.asset(assets, fit: BoxFit.cover),
-            //   ),
-            // ),
           ),
         ),
         Container(
@@ -40,10 +34,9 @@ class ListBuild{
           child: Text(name),
         ),
         Container(
-          width: 30,
           child: IconButton(
               onPressed: onPressed,
-              icon: Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,),
+              icon: icon,
             highlightColor: Colors.cyan,
           ),
         )

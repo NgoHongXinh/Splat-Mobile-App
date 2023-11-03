@@ -73,9 +73,9 @@ class AddDialog{
               padding: EdgeInsets.all(8),
               child: ListView(
                 children: [
-                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){}),
-                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){}),
-                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){}),
+                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){},icon: Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){},icon: Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                  ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: (){},icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
 
                 ],
               ),

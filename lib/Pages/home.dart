@@ -20,35 +20,79 @@ class _HomePageState extends State<HomePage> {
       return AddDialog.AddDialogbuilder(
           onclose: (){Navigator.of(context).pop();},
           onApply: (){Navigator.of(context).pop();},
-          content: 'Bạn có chắc muốn xoá người này');
+          content: 'Bạn có chắc muốn xoá người chơi này');
     });
   }
   void _showDialogAddPlayer(){
-    // showDialog(context: context, builder: (context){
-    //   return AddDialog.AddPlayer(
-    //       title: 'Thêm người chơi',
-    //       onclose: (){Navigator.of(context).pop();},
-    //       onApply: (){Navigator.of(context).pop();},
-    //   );
-    // });
-    showModalBottomSheet(context: context, builder: (context){
-      return Container(
-        height: 500,
-        child: Padding(
-          padding: EdgeInsets.all(9),
-          child: ListView(
+    showModalBottomSheet(
+      context: context,
+
+        shape: RoundedRectangleBorder(
+          borderRadius:  BorderRadius.vertical(top: Radius.circular(30)),
+        ),
+      // transitionAnimationController: ,
+      builder: (context){
+      return Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: _showDialog),
-              ListBuild.ListPlayer(assets: AppAssets.player, name: 'Như',onPressed: _showDialog),
-              ListBuild.ListPlayer(assets: AppAssets.player, name: 'Thịnh',onPressed: _showDialog),
-              ListBuild.ListPlayer(assets: AppAssets.player, name: 'Ngọc',onPressed: _showDialog),
-              ListBuild.ListPlayer(assets: AppAssets.player, name: 'Nhân',onPressed: _showDialog),
-              ListBuild.ListPlayer(assets: AppAssets.player, name: 'Quỳnh',onPressed: _showDialog),
+              Container(
+                alignment: Alignment.centerLeft,
+               child: IconButton(
+                  alignment: Alignment.topLeft,
+                  onPressed: (){Navigator.of(context).pop();},
+                  icon: Icon(Icons.close),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 0,right: 120),
+                child: Container(
+                  child: Text('Thêm người chơi',style: AppTextStyle.headerDialogTextStyle(),)
+                ),
+              ),
             ],
           ),
-        ),
+          Container(
+            height: 350,
+            alignment: Alignment.center,
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: ListView(
+                children: [
+                  ListBuild.ListPlayer(
+                      assets: AppAssets.player,
+                      name: 'Xinh',
+                      onPressed:(){},
+                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
+                  ListBuild.ListPlayer(
+                      assets: AppAssets.player,
+                      name: 'Như',
+                      onPressed: (){},
+                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
+                  ListBuild.ListPlayer(
+                      assets: AppAssets.player,
+                      name: 'Thịnh',
+                      onPressed: (){},
+                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
+                  ListBuild.ListPlayer(
+                      assets: AppAssets.player,
+                      name: 'Ngọc',
+                      onPressed: (){},
+                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
+                  ListBuild.ListPlayer(
+                      assets: AppAssets.player,
+                      name: 'Nhân',
+                      onPressed: (){},
+                      icon:Icon(Icons.add_outlined, color: Colors.orange, size: 30,)),
+                ],
+              ),
+            ),
+          ),
+        ],
       );
-    });
+    },
+    );
   }
   @override
   Widget build(BuildContext context) {
@@ -240,22 +284,20 @@ class _HomePageState extends State<HomePage> {
                                         )
                                     ),
                                     Container(
-
-                                      width: myWidth,
                                       child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
+                                        padding: const EdgeInsets.all(5.0),
                                         child: ListView(
                                           //không cần set height, khi wrap
                                           shrinkWrap: true,
                                           physics: NeverScrollableScrollPhysics(),
                                           //ko cho scroll
                                           children: [
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: _showDialog),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Như',onPressed: _showDialog),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Thịnh',onPressed: _showDialog),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Ngọc',onPressed: _showDialog),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Nhân',onPressed: _showDialog),
-                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Quỳnh',onPressed: _showDialog),
+                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Xinh',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Như',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Thịnh',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Ngọc',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Nhân',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
+                                            ListBuild.ListPlayer(assets: AppAssets.player, name: 'Quỳnh',onPressed: _showDialog,icon:Icon(Icons.cancel_outlined, color: Colors.orange, size: 30,)),
                                           ],
                                         ),
                                       ),

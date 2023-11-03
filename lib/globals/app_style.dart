@@ -48,4 +48,11 @@ class AppTextStyle {
       color: Colors.black54,
     );
   }
+  static TextStyle headerDialogTextStyle() {
+    return GoogleFonts.saira(
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+    );
+  }
 }
