@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/Pages/Game_page.dart';
 import 'package:testapp/Pages/Ratting_page.dart';
 import 'package:testapp/Pages/home.dart';
 import 'package:testapp/Pages/setting_page.dart';
@@ -15,6 +16,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     SettingPage(),
     HomePage(),
     RattingPage(),
+    // GamePage(),
   ];
   @override
   Widget build(BuildContext context) {

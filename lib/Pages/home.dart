@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/ListView/dialog_builder.dart';
 import 'package:testapp/ListView/list_player_builder.dart';
+import 'package:testapp/Pages/Game_page.dart';
 import 'package:testapp/globals/app_asset.dart';
 import 'package:testapp/globals/app_button.dart';
 import 'package:testapp/globals/app_style.dart';
+import 'package:testapp/navbar/navbar_tab.dart';
 
 import '../globals/constants.dart';
 class HomePage extends StatefulWidget {
@@ -59,8 +61,8 @@ class _HomePageState extends State<HomePage> {
           Container(
             child: ListView(
                   children: [
-                    Placeholder(
-                      fallbackHeight: myHeight*0.45,
+                    Container(
+                      height: myHeight*0.45,
                       child: Stack(
                         children: <Widget>[
                           Positioned(
@@ -302,7 +304,12 @@ class _HomePageState extends State<HomePage> {
                                               padding: EdgeInsets.all(10),
                                               child: Column(
                                                 children: <Widget>[
-                                                  AppButton.buildButtonCreateGame(buttonName: 'Tạo game', onTap: (){})
+                                                AppButton.buildButtonCreateGame(buttonName: 'Tạo game', onTap: () {
+                                                  Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(builder: (context) => const GamePage()),
+                                                  );})
+
                                                 ],
                                               ),
                                             )

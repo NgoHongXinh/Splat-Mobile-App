@@ -9,6 +9,15 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
+        ),
+      ),
+    );
   }
 }
